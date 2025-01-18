@@ -6,7 +6,7 @@ import random
 from colorsys import hsv_to_rgb
 
 app = Flask(__name__)
-CORS(app, allow_headers=["Content-Type", "hx-trigger"], resources={r"/api/*": {"origins": {"https://edetculiao.xyz","http://127.0.0.1:5500","http://127.0.0.1:8000"}}})
+CORS(app, allow_headers=["Content-Type", "hx-trigger"], resources={r"/api/*": {"origins": {"https://edetculiao.xyz","https://mecortaronlaluz.com"}}})
 
 limiter = Limiter(util.get_remote_address, app=app, default_limits=["1 per second"]
 )
@@ -23,7 +23,8 @@ except:
     qr_counter = 0
 print(f'KQA | {counter} || {qr_counter}')
 
-COUNTER_FILE_PATH = "counter_all.json"
+COUNTER_FILE_PATH = "/home/kovaqa/counter_all.json"
+TXT_FILE_PATH = '/home/kovaqa/counter_base.txt'
 def load_json_counters():
     try:
         with open(COUNTER_FILE_PATH, "r") as f:
@@ -35,6 +36,9 @@ def save_counters(counters):
     try:
         with open(COUNTER_FILE_PATH, "w") as f:
             json.dump(counters, f,indent=4)
+        with open(TXT_FILE_PATH, "w") as f:
+            counter_edet=str(counters['edet'][1])
+            f.write(counter_edet)
     except Exception as e:
         print(f"Error saving counters: {e}")
 
@@ -54,6 +58,11 @@ def increment_counter():
     try:
         with open("/home/kovaqa/counter_base.txt", "w") as cb:
             cb.write(str(counter))
+        with open(COUNTER_FILE_PATH, "r") as f:
+            counters = json.load(f)
+            counters['edet'] = [counter]
+        with open(COUNTER_FILE_PATH, "w") as f:
+            json.dump(counters, f, indent=4)
     except:
         pass
     print(f'KQA | Edet Culiao returned counter: {counter} for client {request.remote_addr}')
@@ -144,7 +153,7 @@ def handle_json_preflight():
         response='Cómo será la laguna, que el chancho la cruza al trote',
         status=204,
         headers={
-            'Access-Control-Allow-Origin': 'http://127.0.0.1:8000',
+            'Access-Control-Allow-Origin': "https://mecortaronlaluz.com",
             'Access-Control-Allow-Methods': 'POST, OPTIONS',
             'Access-Control-Allow-Headers': 'Content-Type, hx-trigger, hx-target, hx-swap, hx-current-url, hx-request'
         }
