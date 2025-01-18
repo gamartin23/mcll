@@ -426,7 +426,7 @@ select {
   flex-direction: column;
   justify-content: center; 
   align-items: center; 
-  max-width: 90%; 
+  max-width: 100%; 
   text-align: center; 
 }
 .footer-image {
@@ -437,5 +437,5 @@ select {
 }
 
 .legal{
-  font-size: 8px;
+  font-size: 7px;
 }
