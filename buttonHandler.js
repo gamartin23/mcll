@@ -35,14 +35,19 @@
                         stickyText.style.top = '0';
                         stickyText.style.left = '0';
                         stickyText.style.width = '100%';
-                        stickyText.style.backgroundColor = '#00ffa0'; 
+                        stickyText.style.backgroundColor = 'rgb(255, 255, 255)'; 
                         stickyText.style.color = '#ffffff';
                         stickyText.style.textAlign = 'center';
                         stickyText.style.padding = '10px'; 
                         stickyText.style.zIndex = '1000';
-                        stickyText.style.fontSize = '20px'; 
+                        stickyText.style.fontSize = '30px'; 
                         stickyText.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)'; 
-
+                        stickyText.style.textShadow = `
+                            -1px -1px 2px black, /* Sombra superior izquierda */
+                            1px -1px 2px black,  /* Sombra superior derecha */
+                            -1px 1px 2px black,  /* Sombra inferior izquierda */
+                            1px 1px 2px black    /* Sombra inferior derecha */
+                        `;
                         document.body.appendChild(stickyText);
 
                         // Eliminar el texto después de 3 segundos
