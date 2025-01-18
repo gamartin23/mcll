@@ -6,41 +6,47 @@
   <meta name="description" content="El servicio eléctrico en Argentina es un desastre, pero en momentos como éstos, sólo se pude putear. Entrá y hacé catarsis, más federal que nunca.">
   <title>Me cortaron la luz</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/png" href="/fuckall/favicon.png">
+  <link rel="icon" type="image/png" href="https://github.com/gamartin23/mcll/blob/main/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700"   
  rel="stylesheet">
 </head>
 <body>
   <div class="containerr">
-    <img src="./fuckall/mcll_blanco_turquesa_frase.png" alt="MCLL Logo" class="header-logo">
+    <img src="https://github.com/gamartin23/mcll/blob/main/mcll_blanco_turquesa_frase.png?raw=true" alt="MCLL Logo" class="header-logo">
   <div class="container">
-    <h1>Bienvenidx</h1>
-    <p>No podemos prevenir los cortes de luz, pero podemos hacer catarsis
-    <br><br>Buscá tu proveedor de energía eléctrica por provincia, y emití una suave y humilde queja</p>
-    <select id="provincia-select">
-      <option value="todas">Todas</option>
-      <option value="caba">CABA/GBA</option>
-      <option value="ba">Buenos Aires</option>
-      <option value="ca">Catamarca</option>
-      <option value="ch">Chaco</option>
-      <option value="co">Córdoba</option>
-      <option value="cr">Corrientes</option>
-      <option value="er">Entre Ríos</option>
-      <option value="fo">Formosa</option>
-      <option value="ju">Jujuy</option>
-      <option value="lr">La Rioja</option>
-      <option value="mz">Mendoza</option>
-      <option value="mi">Misiones</option>
-      <option value="rn">Río Negro</option>
-      <option value="sa">Salta</option>
-      <option value="sj">San Juan</option>
-      <option value="sl">San Luis</option>
-      <option value="sf">Santa Fé</option>
-      <option value="se">Santiago del Estero</option>
-      <option value="tf">Tierra del Fuego</option>
-      <option value="tu">Tucumán</option>
-    </select>
-    
+    <div class="top">
+      <div class="intro">
+      <h1>Bienvenidx</h1>
+      <p>No podemos prevenir los cortes de luz, pero podemos hacer catarsis
+      <br><br>Buscá tu proveedor de energía eléctrica por provincia, y emití una suave y humilde queja <br><br>Esta página es casi tan útil como presentar una queja formal ante tu proveedor.</p>
+      <select id="provincia-select">
+        <option value="todas">Todas</option>
+        <option value="caba">CABA/GBA</option>
+        <option value="ba">Buenos Aires</option>
+        <option value="ca">Catamarca</option>
+        <option value="ch">Chaco</option>
+        <option value="co">Córdoba</option>
+        <option value="cr">Corrientes</option>
+        <option value="er">Entre Ríos</option>
+        <option value="fo">Formosa</option>
+        <option value="ju">Jujuy</option>
+        <option value="lr">La Rioja</option>
+        <option value="mz">Mendoza</option>
+        <option value="mi">Misiones</option>
+        <option value="rn">Río Negro</option>
+        <option value="sa">Salta</option>
+        <option value="sj">San Juan</option>
+        <option value="sl">San Luis</option>
+        <option value="sf">Santa Fé</option>
+        <option value="se">Santiago del Estero</option>
+        <option value="tf">Tierra del Fuego</option>
+        <option value="tu">Tucumán</option>
+      </select></div>
+      <div class="toptier">
+        <span class="title">Líder de puteadas</span>
+        <span class="worst-company">...</span>
+      </div>
+    </div>
     <div class="grid-container">
       <div class="grid-item" id="edesur" data-provincia="caba">
         <div class="counter-container">
@@ -274,7 +280,7 @@
           <span class="button-text">Putear</span>
           <span class="animated-text">La concha de tu madre EDELAR!</span>
         </button>
-        <img src="edelar.png" alt="edelar" class="logo">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD4sYsd19R73D0ojdxXKD5JtUOOVtjznLuiA&s" alt="edelar" class="logo">
       </div>
 
       <div class="grid-item" id="edemsa" data-provincia="mz">
@@ -465,10 +471,16 @@
     </div>
   </div>
 
-  <footer class="footer">
-    © Kovadev, 2024. Hacemos lo que a nadie le interesa hacer, y a veces funciona
-  </footer>
- 
+  <div class="footer-container">
+    <img src="https://github.com/gamartin23/mcll/blob/main/mcll.png?raw=true" alt="La concha de su madre me volvieron a cortar la luz estos hijos de mil puta y la puta que los pario" class="footer-image" />
+    <br>
+    <span class="footer2">
+    © Kovadev, 2025. Hacemos lo que a nadie le interesa hacer, y a veces funciona.
+    <br>
+    Si necesitás comunicarte conmigo para eliminar el logo de tu compañía de este sitio web, te recomiendo que dejes de romper las pelotas con una página que existe al pedo, y te concentres en mejorar la calidad de tu servicio.
+    </span>
+  </div>
+  
   <script src="iniLoad.js" defer></script>
   <script src="proviHandler.js" defer></script>
   <script src="buttonHandler.js" defer></script>

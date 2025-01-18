@@ -1,7 +1,8 @@
 body {
   display: flex;
-  flex-direction: column; /* Add this */
-  justify-content: center; /* Add this */
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
   background-color: #111;
   font-family: 'Poppins', sans-serif;
   color: #f2f2f2;
@@ -11,17 +12,16 @@ body {
   overflow-x: hidden;
 }
 .header-logo {
-  width: 100%;
-  max-width: 600px; /* adjust this value to your needs */
+  max-width: 90%; /* adjust this value to your needs */
   height: auto;
-  margin: 20px auto;
+  margin: 10px auto;
   display: block;
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .header-logo {
-      max-width: 90%;
+      max-width: 80%;
       margin: 10px auto;
   }
 }
@@ -41,6 +41,113 @@ body {
   width: 100%; /* Change from max-width to width */
   max-width: 1800px;  /* Add a max-width in pixels instead of vw */
 }
+
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-self: center;
+  align-items: center;
+  width: 80%;
+  padding-top: 10px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 900px) {
+  .top {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    justify-content: space-around;
+  align-self: center;
+  align-items: center;
+  width: 80%;
+  }
+}
+
+.intro {
+  text-align: right;
+}
+@media screen and (max-width: 900px) {
+  .intro{
+    text-align: center;
+  }
+}
+
+@keyframes dynamicGlow {
+  0% {
+    box-shadow: 0 0 20px 5px rgba(64, 224, 208, 0.493), 0 0 40px 10px  rgba(152, 0, 223, 0.438);
+  }
+  50% {
+    box-shadow: 0 0 25px 7px  rgba(152, 0, 223, 0.438), 0 0 50px 15px rgba(64, 224, 208, 0.493);
+  }
+  100% {
+    box-shadow: 0 0 20px 5px rgba(64, 224, 208, 0.493), 0 0 40px 10px rgba(152, 0, 223, 0.438);
+  }
+}
+
+.toptier {
+  position: relative; /* Ensure pseudo-elements align properly */
+  display: flex;
+  flex-direction: column; 
+  padding: 30px 30px; /* Inner spacing of the element */
+  background: rgba(15, 15, 15, 0.829); /* Inner background of the element */
+  border-radius: 10px; /* Rounded corners */
+  margin: 50px;
+  animation: dynamicGlow 4s infinite alternate ease-in-out;
+}
+
+.toptier::before {
+  content: ''; /* Required for pseudo-elements */
+  position: absolute;
+  top: -4px; /* Adjust for border thickness */
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  z-index: -1; /* Place behind the element */
+  background: linear-gradient(30deg, rgb(174, 0, 255), turquoise); /* Gradient border */
+  border-radius: inherit; /* Match the parent's border-radius */
+  display: block;
+}
+
+.toptier::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  z-index: -2;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(64, 224, 208, 0.493), rgba(152, 0, 223, 0.438));
+  filter: blur(15px);
+  opacity: 0.1;
+  animation: dynamicGlow 4s infinite alternate ease-in-out;}
+
+.title{
+  padding: 10px;
+  font-size: 2vh;
+  padding-right: 20px;
+}
+
+.worst-company{
+  font-size: 4vh;
+  margin: 10px;
+}
+
+.leader-image{
+  height: 160px; /* adjust as needed */
+  width: auto;
+  margin: 0 10px;
+}
+
+@media screen and (max-width: 900px) {
+  .leader-image {
+      height: 9vw;
+  }
+}
+
 select {
   appearance: none;
   background-color: #111;
@@ -247,13 +354,15 @@ select {
   display: flex;
   position: absolute;
   cursor: default;
-  width: 50vw;
-  left: 21vw;
-  bottom: 30px;
-  opacity: 0;
+  width: auto; /* Adjust to fit the content */
+  left: 50%; /* Center horizontally relative to the button */
+  transform: translateX(-50%); /* Center alignment */
+  bottom: -40px; /* Position below the button */
+  opacity: 0; /* Start hidden */
   font-size: 24px;
-  color: rgba(20, 188, 235, 0.548);
-  z-index: 0;
+  color: rgba(20, 188, 235, 0.9); /* Increase visibility */
+  z-index: 10; /* Ensure it's above other elements */
+  transition: opacity 0.5s ease; /* Smooth transition for visibility */
 }
 
 .putear-button:focus .animated-text {
@@ -296,10 +405,35 @@ select {
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
-      width: 90%; /* Use percentage instead of vw */
+      width: 90%; 
       max-width: 80%;
-      height: auto; /* Let content determine height */
-      font-size: 12px; /* Use px instead of vw */
+      height: auto; 
+      font-size: 12px;
       margin: 0;
   }
+}
+
+.rising-text {
+  position: absolute;
+  color: rgba(173, 216, 230, 1); /* Celeste */
+  font-size: 20px;
+  font-weight: bold;
+  pointer-events: none; /* No bloquea clics */
+  white-space: nowrap;
+  transition: transform 3s ease-out, opacity 3s ease-out; /* Animación */
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  max-width: 90%; 
+  text-align: center; 
+}
+.footer-image {
+  height: 10vw;
+  width: auto;
+  object-fit: cover;
+  border-radius: 5px; 
 }
