@@ -35,7 +35,7 @@
                         stickyText.style.top = '0';
                         stickyText.style.left = '0';
                         stickyText.style.width = '100%';
-                        stickyText.style.backgroundColor = 'rgb(255, 255, 255)'; 
+                        stickyText.style.backgroundColor = 'rgb(0, 163, 68)'; 
                         stickyText.style.color = '#ffffff';
                         stickyText.style.textAlign = 'center';
                         stickyText.style.padding = '10px'; 
