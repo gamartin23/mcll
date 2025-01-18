@@ -1,6 +1,9 @@
 async function fetchInitialCounters() {
     try {
-        const response = await fetch('http://kovaqa.pythonanywhere.com/api/mcll-get');
+        const response = await fetch('kovaqa.pythonanywhere.com/api/mcll-get', {
+            method: 'GET',
+            })
+        
         const data = await response.json();
         
         for (const [divId, count] of Object.entries(data)) {
