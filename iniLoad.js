@@ -89,13 +89,13 @@ async function fetchInitialCounters() {
                 leaderImage.src = "https://edesalenergia.com.ar/eener/image/logo.jpg"
                 break;
             case 'epesf':
-                leaderImage.src = "https://www.epe.santafe.gov.ar/institucional/img/logoEPE2.svg"
+                leaderImage.src = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiepV9GHQATKJ4cvFw8Rh2NL67K936jTuuL42hdYStu6ccingZBFeFgga_lq7j2m64UvRsW5hD5RGCv0qYduWcQm8fcariHjrKPJYS15-K96L4FPYq8KGmXkRu4cX2F2NclG0cd6IKHPyc/w1200-h630-p-k-no-nu/epe.jpg"
                 break;
             case 'edese':
                 leaderImage.src = "https://edese.com.ar/_nuxt/img/logo.0f590b7.png"
                 break;
-            case 'epetdf':
-                leaderImage.src = "https://www.epe.santafe.gov.ar/institucional/img/logoEPE2.svg"
+            case 'dpe':
+                leaderImage.src = "https://www.radiofueguina.com/wp-content/uploads/2019/04/dpe-isologo.jpg"
                 break;
             case 'edet':
                 leaderImage.src = "https://www.edetsa.com/info/pwa/Content/Images/isologotipo-edet-sin-slogan-f.svg"
