@@ -13,7 +13,7 @@
             
             const parentId = this.parentElement.id;
             try {
-                const response = await fetch(`http://kovaqa.pythonanywhere.com/api/mcll-post?${parentId}`, {
+                const response = await fetch(`https://kovaqa.pythonanywhere.com/api/mcll-post?${parentId}`, {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json'
