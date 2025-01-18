@@ -414,12 +414,10 @@ select {
 }
 
 .rising-text {
-  position: absolute;
   color: rgba(173, 216, 230, 1); /* Celeste */
-  font-size: 20px;
+  font-size: 40px;
   font-weight: bold;
-  pointer-events: none; /* No bloquea clics */
-  white-space: nowrap;
+  z-index: 10;
   transition: transform 3s ease-out, opacity 3s ease-out; /* Animación */
 }
 
