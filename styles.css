@@ -435,3 +435,7 @@ select {
   object-fit: cover;
   border-radius: 5px; 
 }
+
+.legal{
+  font-size: 15px;
+}
