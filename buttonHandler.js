@@ -26,33 +26,29 @@
                     if (counterElement && data.counter !== undefined) {
                         counterElement.textContent = data.counter;
 
-                        const risingText = document.createElement('span');
-                        risingText.classList.add('rising-text');
-                        risingText.innerText = `La concha de tu madre, ${parentId.toUpperCase()}!`;
+                        const stickyText = document.createElement('div');
+                        stickyText.classList.add('sticky-text');
+                        stickyText.innerText = `La concha de tu madre, ${parentId.toUpperCase()}!`;
 
-                        // Get the viewport dimensions
-                        const viewportWidth = window.innerWidth;
-                        const viewportHeight = window.innerHeight;
+                        // Estilo para el texto sticky
+                        stickyText.style.position = 'fixed'; 
+                        stickyText.style.top = '0';
+                        stickyText.style.left = '0';
+                        stickyText.style.width = '100%';
+                        stickyText.style.backgroundColor = '#00ffa0'; 
+                        stickyText.style.color = '#ffffff';
+                        stickyText.style.textAlign = 'center';
+                        stickyText.style.padding = '10px'; 
+                        stickyText.style.zIndex = '1000';
+                        stickyText.style.fontSize = '20px'; 
+                        stickyText.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)'; 
 
-                        // Position the text in the center of the viewport
-                        risingText.style.position = 'fixed'; // Use fixed to make it relative to the viewport
-                        risingText.style.left = '50%'; // Center horizontally
-                        risingText.style.top = '50%'; // Center vertically
-                        risingText.style.transform = 'translate(-50%, -50%)'; // Exactly center it
+                        document.body.appendChild(stickyText);
 
-                        document.body.appendChild(risingText);
-
-                        // Trigger animation: Move up and fade out
-                        requestAnimationFrame(() => {
-                            risingText.style.transition = 'transform 1s, opacity 1s'; // Smooth transition
-                            risingText.style.transform = 'translate(-50%, -150%)'; // Move up
-                            risingText.style.opacity = '0'; // Fade out
-                        });
-
-                        // Remove the text after 3 seconds
+                        // Eliminar el texto después de 3 segundos
                         setTimeout(() => {
-                            risingText.remove();
-                        }, 2000);
+                            stickyText.remove();
+                        }, 3000);
 
 
 
