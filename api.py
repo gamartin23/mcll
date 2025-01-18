@@ -6,7 +6,8 @@ import random
 from colorsys import hsv_to_rgb
 
 app = Flask(__name__)
-CORS(app, allow_headers=["Content-Type", "hx-trigger"], resources={r"/api/*": {"origins": {"https://edetculiao.xyz","https://mecortaronlaluz.com"}}})
+CORS(app, allow_headers=["Content-Type", "hx-trigger", "hx-request", "hx-current-url", "hx-target"], resources={r"/api/*": {"origins": ["https://edetculiao.xyz", "https://mecortaronlaluz.com"]}})
+
 
 limiter = Limiter(util.get_remote_address, app=app, default_limits=["1 per second"]
 )
@@ -47,6 +48,11 @@ def save_counters(counters):
 @app.route('/api/get-counter', methods=['GET'])
 @limiter.exempt
 def get_counter():
+    try:
+        with open("/home/kovaqa/counter_base.txt", "r") as cb:
+            counter = int(cb.read())
+    except:
+        counter = 0
     print(f'KQA | Edet Culiao returned counter: {counter} for client {request.remote_addr}')
     return str(counter)
 
@@ -60,7 +66,7 @@ def increment_counter():
             cb.write(str(counter))
         with open(COUNTER_FILE_PATH, "r") as f:
             counters = json.load(f)
-            counters['edet'] = [counter]
+            counters['edet'] = counter
         with open(COUNTER_FILE_PATH, "w") as f:
             json.dump(counters, f, indent=4)
     except:
@@ -96,6 +102,7 @@ def increment_qr_counter():
     return str(qr_counter),200
 
 @app.route('/api/increment-qr-counter', methods=['OPTIONS'])
+@app.route('/api/get-counter', methods=['OPTIONS'])
 def handle_preflight():
     response = app.response_class(
         response='Cómo será la laguna, que el chancho la cruza al trote',
@@ -148,13 +155,14 @@ def generate_water_color():
 
 #Default mecortaronlaluz.com API
 @app.route('/api/mcll-post', methods=['OPTIONS'])
+@app.route('/api/mcll-get', methods=['OPTIONS'])
 def handle_json_preflight():
     response = app.response_class(
         response='Cómo será la laguna, que el chancho la cruza al trote',
         status=204,
         headers={
             'Access-Control-Allow-Origin': "https://mecortaronlaluz.com",
-            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS, GET',
             'Access-Control-Allow-Headers': 'Content-Type, hx-trigger, hx-target, hx-swap, hx-current-url, hx-request'
         }
     )
@@ -165,7 +173,7 @@ def handle_json_preflight():
 def increment_json_counter():
     counters = load_json_counters()
     data=str(request.full_path).split('?')[1]
-    
+
     if not data:
         return jsonify({"error": "Invalid data"}), 400
     div_id = data
