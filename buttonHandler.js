@@ -48,12 +48,21 @@
                             -1px 1px 2px black,  /* Sombra inferior izquierda */
                             1px 1px 2px black    /* Sombra inferior derecha */
                         `;
+                        stickyText.style.opacity = '0'; // Comienza invisible
+                        stickyText.style.transition = 'opacity 1s'; // Transición suave para el efecto de entrada y salida
+
                         document.body.appendChild(stickyText);
 
-                        // Eliminar el texto después de 3 segundos
                         setTimeout(() => {
-                            stickyText.remove();
-                        }, 3000);
+                            stickyText.style.opacity = '1';
+                        }, 10); 
+
+                        setTimeout(() => {
+                            stickyText.style.opacity = '0';
+                            setTimeout(() => {
+                                stickyText.remove();
+                            }, 1000);
+                        }, 3000); 
 
 
 
