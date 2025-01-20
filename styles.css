@@ -193,12 +193,15 @@ select {
   max-width: 100%;
   margin: 20px auto;
   box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
 }
 
 .grid-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: center;
   background-color: #222;
   border-radius: 10px;
   padding: 25px;
