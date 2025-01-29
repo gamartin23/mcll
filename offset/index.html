@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offset Timestamp Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid white;
+            border-radius: 10px;
+            min-height: 250px;
+        }
+        input, button {
+            font-family: 'Poppins', sans-serif;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        input {
+            width: calc(100% - 22px);
+            box-sizing: border-box;
+        }
+        button {
+            cursor: pointer;
+        }
+        #currentTimestamp {
+            display: inline-block;
+            min-width: 180px;
+        }
+        .offset-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .footer img {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Offset Timestamp Calculator</h1>
+        <p>Current Timestamp (UTC -3): <span id="currentTimestamp"></span></p>
+        <input type="datetime-local" id="datetimeInput">
+        <button onclick="calculateOffset()">Calculate Offset</button>
+        <div class="offset-container">
+            <p>Offset (ms): <span id="offsetResult"></span></p>
+            <button onclick="copyOffset()">📋</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <img src="kova.png" alt="KovaTools">
+        <p>KovaTools</p>
+    </div>
+
+    <script>
+        function updateCurrentTimestamp() {
+            const now = new Date();
+            now.setHours(now.getHours() - 3); // Adjust for UTC -3
+            document.getElementById("currentTimestamp").innerText = now.getTime();
+        }
+
+        function calculateOffset() {
+            const inputTime = document.getElementById("datetimeInput").value;
+            if (!inputTime) return alert("Please select a date and time.");
+            
+            const selectedDate = new Date(inputTime);
+            selectedDate.setHours(selectedDate.getHours() - 3); // Adjust for UTC -3
+            
+            const now = new Date();
+            now.setHours(now.getHours() - 3); // Adjust for UTC -3
+            
+            const offset = selectedDate.getTime() - now.getTime();
+            document.getElementById("offsetResult").innerText = offset;
+        }
+
+        function copyOffset() {
+            const offsetText = document.getElementById("offsetResult").innerText;
+            if (!offsetText) return;
+            navigator.clipboard.writeText(offsetText).then(() => {
+            });
+        }
+
+        updateCurrentTimestamp();
+        setInterval(updateCurrentTimestamp, 1000);
+    </script>
+</body>
+</html>
