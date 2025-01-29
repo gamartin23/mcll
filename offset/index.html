@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://github.com/gamartin23/mcll/blob/main/offset/favicon.png?raw=true">
     <title>Offset Timestamp Calculator</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -25,6 +26,7 @@
             border: 1px solid white;
             border-radius: 10px;
             min-height: 250px;
+            box-shadow: 0px 0px 75px rgba(136, 136, 136, 0.438);
         }
         input, button {
             font-family: 'Poppins', sans-serif;
@@ -50,6 +52,10 @@
             gap: 10px;
             margin-top: 10px;
         }
+        .copy-button {
+            padding: 5px 8px;
+            font-size: 14px;
+        }
         .footer {
             margin-top: 20px;
             text-align: center;
@@ -68,7 +74,7 @@
         <button onclick="calculateOffset()">Calculate Offset</button>
         <div class="offset-container">
             <p>Offset (ms): <span id="offsetResult"></span></p>
-            <button onclick="copyOffset()">📋</button>
+            <button class="copy-button" onclick="copyOffset()">📋</button>
         </div>
     </div>
 
@@ -102,6 +108,7 @@
             const offsetText = document.getElementById("offsetResult").innerText;
             if (!offsetText) return;
             navigator.clipboard.writeText(offsetText).then(() => {
+                alert("Offset copied to clipboard!");
             });
         }
 
