@@ -186,15 +186,14 @@ select {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Reduced minmax value */
-  gap: 20px;
-  padding: 20px;
-  width: 100%;
-  max-width: 100%;
-  margin: 20px auto;
-  box-sizing: border-box;
-  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Mínimo 250px por columna */
+  max-width: 95vw; /* Limita el ancho total a 3 columnas */
+  margin: 0 auto; /* Centra el grid en la página */
+  gap: 10px; /* Espaciado entre elementos */
+  min-height: 100vh; /* Para centrar en pantalla */
   justify-content: center;
+  align-content: flex-start;
+  min-width: 60vw;
 }
 
 .grid-item {
@@ -212,7 +211,13 @@ select {
 
 @media (min-width: 1400px) { /* Add this to ensure 3 columns on large screens */
   .grid-container {
-      grid-template-columns: repeat(3, 1fr);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr)); /* Mínimo 250px por columna */
+      max-width: 100vw; /* Limita el ancho total a 3 columnas */
+      margin: 0 auto; /* Centra el grid en la página */
+      gap: 10px; /* Espaciado entre elementos */
+      justify-content: center;
+      align-content: flex-start;
   }
 }
 
