@@ -67,10 +67,19 @@ body {
 
 .intro {
   text-align: right;
+  font-size: 2.1vh;
 }
 @media screen and (max-width: 900px) {
   .intro{
     text-align: center;
+    font-size: 2.5vh;
+  }
+}
+
+@media screen and (min-width: 2100px) {
+  .intro{
+    text-align: right;
+    font-size: 1.5vh;
   }
 }
 
@@ -93,7 +102,7 @@ body {
   padding: 30px 30px;
   background: rgba(15, 15, 15, 0.829);
   border-radius: 10px;
-  margin: 50px;
+  margin: 7vh;
   animation: dynamicGlow 4s infinite alternate ease-in-out;
 }
 
