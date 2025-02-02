@@ -442,12 +442,13 @@ select {
   flex-direction: column;
   justify-content: center; 
   align-items: center; 
-  max-width: 100%; 
+  max-width: 80vw;
   text-align: center; 
+  margin: 30px auto;
+  margin-top: 190px;
+  place-items: center;
+  gap: 15px;
   color: #f2f2f270;
-   
-  margin: 15px;
-  gap: 10px;
   align-self: flex-end;
 }
 .footer-image {
@@ -455,6 +456,7 @@ select {
   width: auto;
   object-fit: cover;
   border-radius: 5px; 
+  opacity: 50%;
 }
 
 .legal{
