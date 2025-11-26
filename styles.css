@@ -1,16 +1,26 @@
 body {
   display: flex;
   flex-direction: column; 
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center; 
-  background-color: #111;
+  background: linear-gradient(
+      to bottom, 
+      #111,
+      #3a3a3a
+  ); 
+  
+  background-attachment: fixed;
+  background-size: 100% 100%;
+
   font-family: 'Poppins', sans-serif;
   color: #f2f2f2;
   margin: 0;
   padding: 0;
   min-height: 100vh;
   overflow-x: hidden;
+  transform: translateZ(0); 
 }
+
 .header-logo {
   max-width: 90%;
   height: auto;
@@ -68,11 +78,24 @@ body {
 .intro {
   text-align: right;
   font-size: 2.1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
+
+.controls-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
 @media screen and (max-width: 900px) {
   .intro{
     text-align: center;
     font-size: 2.5vh;
+    align-items: center;
   }
 }
 
@@ -80,6 +103,9 @@ body {
   .intro{
     text-align: right;
     font-size: 1.5vh;
+  }
+  .controls-container {
+      flex-direction: row;
   }
 }
 
@@ -192,6 +218,47 @@ select {
   padding-right: 3rem;
 }
 
+
+#sort-button {
+    --glow-color: rgba(64, 224, 208, 0.6); 
+    --glow-spread-color: rgba(64, 224, 208, 0.2);
+    --btn-color: #111; 
+
+    appearance: none;
+    background-color: var(--btn-color);
+    color: white;
+    border: 2px solid var(--glow-color);
+    border-radius: 25px;
+    padding: 10px 10px;
+    height: 50px;
+    width: 200px;
+    flex-shrink: 0; 
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 0 5px 1px var(--glow-color),
+        0 0 10px 2px var(--glow-spread-color);
+    text-shadow: 0 0 5px var(--glow-color);
+    font-weight: bold;
+}
+
+#sort-button:hover {
+    border-color: rgba(64, 224, 208, 1);
+    box-shadow: 
+        0 0 8px 2px rgba(64, 224, 208, 1),
+        0 0 15px 4px rgba(64, 224, 208, 0.5);
+    background-color: rgba(64, 224, 208, 0.1); 
+}
+
+#sort-button:active {
+    background-color: rgba(64, 224, 208, 0.3);
+    box-shadow: 0 0 5px 1px rgba(64, 224, 208, 1);
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -215,6 +282,8 @@ select {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   max-width: 70vw;
   min-height: 37vh;
+  transform: translateZ(0);
+  position: relative;
 }
 
 @media (min-width: 1400px) {
@@ -319,8 +388,8 @@ select {
 }
 
 .putear-button {
-  --glow-color: rgba(169, 180, 207, 0.438);
-  --glow-spread-color: rgba(157, 224, 255, 0.21);
+  --glow-color: rgba(101, 219, 208, 0.452);
+  --glow-spread-color: rgba(180, 231, 255, 0.753);
   --enhanced-glow-color: rgba(206, 244, 255, 0);
   --btn-color: rgb(9, 16, 19);
   border: 0.1em solid var(--glow-color);
@@ -332,27 +401,23 @@ select {
   background-color: var(--btn-color);
   border-radius: 1em;
   outline: none;
-  box-shadow: 0 0 0.2em 0.1em var(--glow-color),
-              0 0 8em 1em var(--glow-spread-color),
-              inset 0 0 0.5em 0.25em var(--glow-color);
+  box-shadow: 0 0 0.1em 0.1em var(--glow-color),
+              inset 0 0 0.2em 0.1em var(--glow-color); 
   text-shadow: 0 0 0.5em var(--glow-color);
   position: relative;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.9s;
   margin-top: 3rem;
   margin-bottom: 1rem;
+  z-index: 10; 
+  perspective: 1000px;
 }
 
 .putear-button:hover {
   color: var(--btn-color);
   background-color: var(--glow-color);
   box-shadow: 0 0 1em 0.25em var(--glow-color),
-              0 0 2em 2em var(--glow-spread-color),
               inset 0 0 0.75em 0.25em var(--glow-color);
-}
 
-.putear-button:hover::after {
-  opacity: 1;
-  background-color: rgba(157, 224, 255, 1);
 }
 
 .putear-button:active {
@@ -393,15 +458,25 @@ select {
   pointer-events: none;
   content: "";
   position: absolute;
-  top: 175%;
-  left: 0;
-  height: 100%;
+  top: 100%; 
+  left: 50%;
+  transform: 
+      translateX(-50%) perspective(1.5em) rotateX(15deg) scale(1, 0.2);
+      
+  height: 100%; 
   width: 100%;
   background-color: var(--glow-spread-color);
-  filter: blur(2em);
-  opacity: 0.7;
-  transition: opacity 0.5s ease;
-  transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+  filter: blur(1.2em); 
+  opacity: 0.4;
+  transition: opacity 0.5s ease, transform 0.2s ease; 
+  z-index: -1; 
+  border-radius: 1em;
+}
+
+.putear-button:hover::after {
+    opacity: 1;
+    transform: 
+        translateX(-50%) translateY(30%) perspective(1.5em) rotateX(35deg) scale(1, 0.6)
 }
 
 .footer {
@@ -461,4 +536,53 @@ select {
 
 .legal{
   font-size: 7px;
+}
+
+#sort-button {
+    --glow-color: rgba(64, 224, 208, 0.6);
+    --glow-spread-color: rgba(64, 224, 208, 0.2);
+    --btn-color: #111;
+    appearance: none;
+    background-color: var(--btn-color);
+    color: white;
+    border: 2px solid var(--glow-color);
+    border-radius: 25px;
+    padding: 10px 20px;
+    height: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    margin: 20px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 0 5px 1px var(--glow-color),
+        0 0 10px 2px var(--glow-spread-color);
+    text-shadow: 0 0 5px var(--glow-color);
+    font-weight: bold;
+}
+
+#sort-button:hover {
+    border-color: rgba(64, 224, 208, 1);
+    box-shadow: 
+        0 0 8px 2px rgba(64, 224, 208, 1),
+        0 0 15px 4px rgba(64, 224, 208, 0.5);
+    background-color: rgba(64, 224, 208, 0.1);
+}
+
+#sort-button:active {
+    background-color: rgba(64, 224, 208, 0.3);
+    box-shadow: 0 0 5px 1px rgba(64, 224, 208, 1);
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+@media screen and (max-width: 900px) {
+    .intro {
+        align-items: center;
+    }
 }

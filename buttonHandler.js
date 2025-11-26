@@ -1,4 +1,97 @@
+const PROVINCE_ORDER = [
+    'tucuman', 
+    'buenosaires',
+    'chaco', 
+    'misiones',
+    'corrientes',
+    'formosa',
+    'jujuy',
+    'la-rioja',
+    'mendoza',
+    'salta',
+    'san-juan',
+    'san-luis',
+    'santafe', 
+    'cordoba',
+    'tierradelfuego',
+    'chubut',
+    'neuquen',
+    'santacruz',
+];
+
+
+function sortGridItems(sortBy) {
+    const gridContainer = document.querySelector('.grid-container');
+    const items = Array.from(gridContainer.querySelectorAll('.grid-item')); 
+
+    items.sort((a, b) => {
+        if (sortBy === 'votos') {
+            const votesA = parseInt(a.querySelector('.counter-1').textContent.replace(/[^0-9]/g, '') || 0);
+            const votesB = parseInt(b.querySelector('.counter-1').textContent.replace(/[^0-9]/g, '') || 0);
+            return votesB - votesA;
+
+        } else if (sortBy === 'alfabetico') {
+            const nameA = a.id.toLowerCase();
+            const nameB = b.id.toLowerCase();
+            return nameA.localeCompare(nameB);
+
+        } else if (sortBy === 'provincia') {
+            const provA = a.getAttribute('data-provincia');
+            const provB = b.getAttribute('data-provincia');
+            
+            const indexA = PROVINCE_ORDER.indexOf(provA);
+            const indexB = PROVINCE_ORDER.indexOf(provB);
+
+            if (indexA !== indexB) {
+                if (indexA === -1) return 1;
+                if (indexB === -1) return -1;
+                return indexA - indexB;
+            }
+            const nameA = a.id.toLowerCase();
+            const nameB = b.id.toLowerCase();
+            return nameA.localeCompare(nameB);
+        }
+        return 0; 
+    });
+
+    items.forEach(item => gridContainer.appendChild(item));
+}
+
+
 (() => {
+    document.addEventListener('DOMContentLoaded', () => {
+        const sortButton = document.getElementById('sort-button');
+
+        if (sortButton) {
+            
+            sortGridItems('provincia'); 
+            
+            sortButton.setAttribute('data-sort-by', 'provincia'); 
+            sortButton.textContent = 'Votos'; 
+            
+            sortButton.addEventListener('click', () => {
+                let currentSortBy = sortButton.getAttribute('data-sort-by');
+                let nextSortBy;
+                let nextButtonText;
+
+                if (currentSortBy === 'provincia') {
+                    nextSortBy = 'votos';
+                    nextButtonText = 'Nombre';
+                } else if (currentSortBy === 'votos') {
+                    nextSortBy = 'alfabetico';
+                    nextButtonText = 'Provincia';
+                } else {
+                    nextSortBy = 'provincia';
+                    nextButtonText = 'Votos';
+                }
+
+                sortGridItems(nextSortBy);
+                sortButton.setAttribute('data-sort-by', nextSortBy);
+                sortButton.textContent = nextButtonText;
+            });
+        }
+    });
+
     const buttons = document.querySelectorAll('.putear-button');
     
     buttons.forEach(button => {
@@ -30,7 +123,6 @@
                         stickyText.classList.add('sticky-text');
                         stickyText.innerText = `La concha de tu madre, ${parentId.toUpperCase()}!`;
 
-                        // Estilo para el texto sticky
                         stickyText.style.position = 'fixed'; 
                         stickyText.style.top = '0';
                         stickyText.style.left = '0';
@@ -48,8 +140,8 @@
                             -1px 1px 2px black,  /* Sombra inferior izquierda */
                             1px 1px 2px black    /* Sombra inferior derecha */
                         `;
-                        stickyText.style.opacity = '0'; // Comienza invisible
-                        stickyText.style.transition = 'opacity 1s'; // Transición suave para el efecto de entrada y salida
+                        stickyText.style.opacity = '0';
+                        stickyText.style.transition = 'opacity 1s';
 
                         document.body.appendChild(stickyText);
 

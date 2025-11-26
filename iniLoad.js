@@ -1,3 +1,8 @@
+function getProvinceFromId(providerId) {
+    const item = document.getElementById(providerId);
+    return item ? item.getAttribute('data-provincia') : null;
+}
+
 async function fetchInitialCounters() {
     try {
         const response = await fetch('https://kovaqa.pythonanywhere.com/api/mcll-get', {
@@ -12,18 +17,29 @@ async function fetchInitialCounters() {
                 counterElement.textContent = count;
             }
         }
-        // Find highest value and its key
+        
         const leaderDiv = document.querySelector('.toptier');
+        const toptierClickable = document.getElementById('toptier-clickable'); 
+        
         const highestEntry = Object.entries(data).reduce((max, current) => 
             current[1] > max[1] ? current : max
         );
+        
         const leaderDivId = highestEntry[0];
         const leaderCount = highestEntry[1];
         const worstCompanySpan = leaderDiv.querySelector('.worst-company');
+
+        const leaderProvince = getProvinceFromId(leaderDivId); 
+
         worstCompanySpan.textContent = `${leaderDivId.toUpperCase()} - ${leaderCount} puteadas`;
+        
+        if (toptierClickable && leaderProvince) {
+            toptierClickable.setAttribute('data-target-provincia', leaderProvince);
+        }
+
         const leaderImage = document.createElement('img');
         leaderImage.classList.add('leader-image');
-        // Switch case for image URLs
+
         switch(leaderDivId) {
             case 'edesur':
                 leaderImage.src = "https://upload.wikimedia.org/wikipedia/commons/e/e5/Edesur_logo22.png";
@@ -100,11 +116,12 @@ async function fetchInitialCounters() {
             case 'edet':
                 leaderImage.src = "https://www.edetsa.com/info/pwa/Content/Images/isologotipo-edet-sin-slogan-f.svg"
                 break;
-            // Add other cases here
+
             default:
                 leaderImage.src = "https://github.com/gamartin23/mcll/blob/main/mcll.png?raw=true";
                 
         }
+        
         worstCompanySpan.parentNode.insertBefore(leaderImage, worstCompanySpan);
         leaderImage.style.height = "8vw";
         leaderImage.style.width = "auto";
