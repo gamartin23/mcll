@@ -1,22 +1,24 @@
 const PROVINCE_ORDER = [
-    'tucuman', 
-    'buenosaires',
-    'chaco', 
-    'misiones',
-    'corrientes',
-    'formosa',
-    'jujuy',
-    'la-rioja',
-    'mendoza',
-    'salta',
-    'san-juan',
-    'san-luis',
-    'santafe', 
-    'cordoba',
-    'tierradelfuego',
-    'chubut',
-    'neuquen',
-    'santacruz',
+    'caba', 
+    'ba',
+    'ca', 
+    'ch',
+    'co',
+    'cr',
+    'er',
+    'fo',
+    'ju',
+    'lr',
+    'mz',
+    'mi',
+    'rn', 
+    'sa',
+    'sj',
+    'sl',
+    'sf',
+    'se',
+    'tf',
+    'tu'
 ];
 
 
@@ -47,6 +49,7 @@ function sortGridItems(sortBy) {
                 if (indexB === -1) return -1;
                 return indexA - indexB;
             }
+            
             const nameA = a.id.toLowerCase();
             const nameB = b.id.toLowerCase();
             return nameA.localeCompare(nameB);
@@ -63,11 +66,10 @@ function sortGridItems(sortBy) {
         const sortButton = document.getElementById('sort-button');
 
         if (sortButton) {
-            
             sortGridItems('provincia'); 
             
             sortButton.setAttribute('data-sort-by', 'provincia'); 
-            sortButton.textContent = 'Votos'; 
+            sortButton.textContent = 'Votos';
             
             sortButton.addEventListener('click', () => {
                 let currentSortBy = sortButton.getAttribute('data-sort-by');
@@ -155,9 +157,6 @@ function sortGridItems(sortBy) {
                                 stickyText.remove();
                             }, 1000);
                         }, 3000); 
-
-
-
 
                     }
                 }
