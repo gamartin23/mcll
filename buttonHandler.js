@@ -28,8 +28,11 @@ function sortGridItems(sortBy) {
 
     items.sort((a, b) => {
         if (sortBy === 'votos') {
-            const votesA = parseInt(a.querySelector('.counter-1').textContent.replace(/[^0-9]/g, '') || 0);
-            const votesB = parseInt(b.querySelector('.counter-1').textContent.replace(/[^0-9]/g, '') || 0);
+            const counterA = a.querySelector('[id^="counter-"]');
+            const counterB = b.querySelector('[id^="counter-"]');
+
+            const votesA = parseInt(counterA?.textContent.replace(/[^0-9]/g, '') || 0);
+            const votesB = parseInt(counterB?.textContent.replace(/[^0-9]/g, '') || 0);
             return votesB - votesA;
 
         } else if (sortBy === 'alfabetico') {
@@ -104,7 +107,6 @@ function sortGridItems(sortBy) {
         button.onclick = async function(e) {
             e.preventDefault();
             e.stopPropagation();
-            const position = button.getBoundingClientRect()
             
             const parentId = this.parentElement.id;
             try {
@@ -126,21 +128,18 @@ function sortGridItems(sortBy) {
                         stickyText.innerText = `La concha de tu madre, ${parentId.toUpperCase()}!`;
 
                         stickyText.style.position = 'fixed'; 
-                        stickyText.style.top = '0';
-                        stickyText.style.left = '0';
-                        stickyText.style.width = '100%';
-                        stickyText.style.backgroundColor = 'rgb(0, 163, 68)'; 
-                        stickyText.style.color = '#ffffff';
-                        stickyText.style.textAlign = 'center';
-                        stickyText.style.padding = '10px'; 
+                        stickyText.style.top = '15%'; 
+                        stickyText.style.left = '50%'; 
+                        stickyText.style.transform = 'translateX(-50%)'; 
+                        stickyText.style.color = 'rgba(20, 188, 235, 0.9)'; 
                         stickyText.style.zIndex = '1000';
                         stickyText.style.fontSize = '30px'; 
                         stickyText.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)'; 
                         stickyText.style.textShadow = `
-                            -1px -1px 2px black, /* Sombra superior izquierda */
-                            1px -1px 2px black,  /* Sombra superior derecha */
-                            -1px 1px 2px black,  /* Sombra inferior izquierda */
-                            1px 1px 2px black    /* Sombra inferior derecha */
+                            -1px -1px 2px black,
+                            1px -1px 2px black,
+                            -1px 1px 2px black,
+                            1px 1px 2px black
                         `;
                         stickyText.style.opacity = '0';
                         stickyText.style.transition = 'opacity 1s';
@@ -157,6 +156,7 @@ function sortGridItems(sortBy) {
                                 stickyText.remove();
                             }, 1000);
                         }, 3000); 
+
 
                     }
                 }
