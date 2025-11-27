@@ -561,8 +561,7 @@ select {
 }
 
 #global-ui-layer .sticky-text {
-  pointer-events: auto; 
-  position: relative; 
+  position: fixed; 
   background-color: rgb(0,163,68);
   color: #fff;
   padding: 10px 20px;
