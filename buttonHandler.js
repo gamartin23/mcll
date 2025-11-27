@@ -127,9 +127,10 @@ function sortGridItems(sortBy) {
                         stickyText.classList.add('sticky-text');
                         stickyText.innerText = `La concha de tu madre, ${parentId.toUpperCase()}!`;
 
-                        stickyText.style.position = 'fixed'; 
-                        stickyText.style.top = '15%'; 
-                        stickyText.style.left = '50%'; 
+                        stickyText.style.position = 'absolute'; 
+                        const topPosition = window.scrollY + (document.documentElement.clientHeight * 0.15); 
+                        stickyText.style.top = `${topPosition}px`;
+                        stickyText.style.left = '50%';        
                         stickyText.style.transform = 'translateX(-50%)'; 
                         stickyText.style.color = 'rgba(20, 188, 235, 0.9)'; 
                         stickyText.style.zIndex = '1000';
