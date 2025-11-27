@@ -127,7 +127,7 @@ function sortGridItems(sortBy) {
 
                         const stickyText = document.createElement('div');
                         stickyText.classList.add('sticky-text');
-                        stickyText.innerText = `La concha de tu madre, ${parentId.toUpperCase()}!`;
+                        stickyText.innerText = `4La concha de tu madre, ${parentId.toUpperCase()}!`;
 
                         layer.appendChild(stickyText);
 
