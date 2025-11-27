@@ -129,13 +129,13 @@ function sortGridItems(sortBy) {
 
                         stickyText.style.position = 'fixed'; 
                         stickyText.style.top = '50px'; 
-                        stickyText.style.left = '50%';        
+                        stickyText.style.left = '50%';    
                         stickyText.style.transform = 'translateX(-50%)';
                         stickyText.style.backgroundColor = 'rgb(0, 163, 68)'; 
                         stickyText.style.color = '#ffffff'; 
                         stickyText.style.padding = '10px 20px';
                         stickyText.style.borderRadius = '8px'; 
-                        stickyText.style.zIndex = '1000';
+                        stickyText.style.zIndex = '9999';
                         stickyText.style.fontSize = '30px'; 
                         stickyText.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.3)'; 
                         stickyText.style.textShadow = `
