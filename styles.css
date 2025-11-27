@@ -446,9 +446,7 @@ select {
 }
 
 .animated-text {
-  display: flex;
-  position: absolute;
-  cursor: default;
+  position: fixed;
   width: auto;
   left: 50%;
   transform: translateX(-50%);
