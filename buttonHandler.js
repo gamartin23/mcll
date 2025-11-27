@@ -123,6 +123,8 @@ function sortGridItems(sortBy) {
                     if (counterElement && data.counter !== undefined) {
                         counterElement.textContent = data.counter;
 
+                        let layer = document.getElementById('global-ui-layer')
+
                         const stickyText = document.createElement('div');
                         stickyText.classList.add('sticky-text');
                         stickyText.innerText = `La concha de tu madre, ${parentId.toUpperCase()}!`;
@@ -147,7 +149,7 @@ function sortGridItems(sortBy) {
                         stickyText.style.opacity = '0';
                         stickyText.style.transition = 'opacity 1s';
 
-                        document.containerr.appendChild(stickyText);
+                        layer.appendChild(stickyText);
 
                         setTimeout(() => {
                             stickyText.style.opacity = '1';
