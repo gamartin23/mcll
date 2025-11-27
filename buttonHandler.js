@@ -131,9 +131,9 @@ function sortGridItems(sortBy) {
 
                         layer.appendChild(stickyText);
 
-                        // setTimeout(() => {
-                        //     stickyText.style.opacity = '1';
-                        // }, 10); 
+                        setTimeout(() => {
+                            stickyText.style.opacity = '1';
+                        }, 10); 
 
                         // setTimeout(() => {
                         //     stickyText.style.opacity = '0';
