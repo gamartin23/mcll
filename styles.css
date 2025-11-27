@@ -446,7 +446,9 @@ select {
 }
 
 .animated-text {
-  position: fixed;
+  display: flex;
+  position: absolute;
+  cursor: default;
   width: auto;
   left: 50%;
   transform: translateX(-50%);
@@ -561,7 +563,11 @@ select {
 }
 
 #global-ui-layer .sticky-text {
-  position: fixed; 
+  pointer-events: auto; 
+  position: fixed; /* ¡Propiedad clave añadida! */
+  top: 50px; /* Anclaje al viewport */
+  left: 50%; /* Centrado */
+  transform: translateX(-50%); /* Ajuste de centrado real */
   background-color: rgb(0,163,68);
   color: #fff;
   padding: 10px 20px;
