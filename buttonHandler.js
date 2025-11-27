@@ -147,7 +147,7 @@ function sortGridItems(sortBy) {
                         stickyText.style.opacity = '0';
                         stickyText.style.transition = 'opacity 1s';
 
-                        document.body.appendChild(stickyText);
+                        document.containerr.appendChild(stickyText);
 
                         setTimeout(() => {
                             stickyText.style.opacity = '1';
