@@ -6,12 +6,11 @@ body {
   background: linear-gradient(
       to bottom, 
       #111,
-      #3a3a3a
-  ); 
-  
+      #3a3a3a);
+  height: auto;
+  overflow-y: scroll;
   background-attachment: fixed;
   background-size: 100% 100%;
-
   font-family: 'Poppins', sans-serif;
   color: #f2f2f2;
   margin: 0;
@@ -20,6 +19,11 @@ body {
   overflow-x: hidden;
   transform: translateZ(0); 
 }
+
+html, body {
+    overflow-y: auto !important;
+}
+
 
 .header-logo {
   max-width: 90%;
