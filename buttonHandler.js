@@ -131,16 +131,16 @@ function sortGridItems(sortBy) {
 
                         layer.appendChild(stickyText);
 
-                        setTimeout(() => {
-                            stickyText.style.opacity = '1';
-                        }, 10); 
+                        // setTimeout(() => {
+                        //     stickyText.style.opacity = '1';
+                        // }, 10); 
 
-                        setTimeout(() => {
-                            stickyText.style.opacity = '0';
-                            setTimeout(() => {
-                                stickyText.remove();
-                            }, 1000);
-                        }, 3000); 
+                        // setTimeout(() => {
+                        //     stickyText.style.opacity = '0';
+                        //     setTimeout(() => {
+                        //         stickyText.remove();
+                        //     }, 1000);
+                        // }, 3000); 
 
 
                     }
