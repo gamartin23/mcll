@@ -78,6 +78,7 @@ function sortGridItems(sortBy) {
                 let currentSortBy = sortButton.getAttribute('data-sort-by');
                 let nextSortBy;
                 let nextButtonText;
+
                 if (currentSortBy === 'votos') {
                     nextSortBy = 'alfabetico';
                     nextButtonText = 'Provincia';
