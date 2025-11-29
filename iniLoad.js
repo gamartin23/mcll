@@ -17,7 +17,9 @@ async function fetchInitialCounters() {
                 counterElement.textContent = count;
             }
         }
-        
+        if (typeof sortGridItems === 'function') {
+            sortGridItems('votos');
+        }
         const leaderDiv = document.querySelector('.toptier');
         const toptierClickable = document.getElementById('toptier-clickable'); 
         

@@ -69,11 +69,9 @@ function sortGridItems(sortBy) {
         const sortButton = document.getElementById('sort-button');
 
         if (sortButton) {
-            sortGridItems('votos'); 
-            
             sortButton.setAttribute('data-sort-by', 'votos'); 
             sortButton.textContent = 'Nombre'; 
-            
+
             sortButton.addEventListener('click', () => {
                 let currentSortBy = sortButton.getAttribute('data-sort-by');
                 let nextSortBy;
