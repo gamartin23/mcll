@@ -72,22 +72,21 @@ function sortGridItems(sortBy) {
             sortGridItems('votos'); 
             
             sortButton.setAttribute('data-sort-by', 'votos'); 
-            sortButton.textContent = 'Nombre';
+            sortButton.textContent = 'Nombre'; 
             
             sortButton.addEventListener('click', () => {
                 let currentSortBy = sortButton.getAttribute('data-sort-by');
                 let nextSortBy;
                 let nextButtonText;
-
-                if (currentSortBy === 'provincia') {
-                    nextSortBy = 'votos';
-                    nextButtonText = 'Nombre';
-                } else if (currentSortBy === 'votos') {
+                if (currentSortBy === 'votos') {
                     nextSortBy = 'alfabetico';
                     nextButtonText = 'Provincia';
-                } else {
+                } else if (currentSortBy === 'alfabetico') {
                     nextSortBy = 'provincia';
                     nextButtonText = 'Votos';
+                } else { // 'provincia'
+                    nextSortBy = 'votos';
+                    nextButtonText = 'Nombre';
                 }
 
                 sortGridItems(nextSortBy);
